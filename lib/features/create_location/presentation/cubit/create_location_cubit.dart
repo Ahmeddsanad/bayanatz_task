@@ -67,13 +67,13 @@ class CreateLocationCubit extends Cubit<CreateLocationState> {
   }
 
   void resetLocationDescriptionForm() {
-    locationNameController.clear();
-    latitudeController.clear();
-    longitudeController.clear();
-    countryController.clear();
-    stateController.clear();
-    cityController.clear();
-    postalCodeController.clear();
+    locationNameController = TextEditingController();
+    latitudeController = TextEditingController();
+    longitudeController = TextEditingController();
+    countryController = TextEditingController();
+    stateController = TextEditingController();
+    cityController = TextEditingController();
+    postalCodeController = TextEditingController();
     locDescKey.currentState?.reset();
     allowGeofence = false;
     allowBreaks = false;

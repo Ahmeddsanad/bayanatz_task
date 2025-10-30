@@ -21,7 +21,9 @@ class LatLngData extends StatelessWidget {
             hintText: '30.0444',
             validator: AppValidators.validateLatitude,
             keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'^[0-9]*\.?[0-9]*$')),
+            ],
           ),
         ),
         horizontalSpace(15),

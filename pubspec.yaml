@@ -56,6 +56,12 @@ dependencies:
   # Switch widget with animated toggle
   riff_switch: ^0.0.4
 
+  # Firebase core package - required for initializing Firebase
+  firebase_core: ^4.2.0
+
+  # Cloud Firestore package - NoSQL cloud database from Firebase
+  cloud_firestore: ^6.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

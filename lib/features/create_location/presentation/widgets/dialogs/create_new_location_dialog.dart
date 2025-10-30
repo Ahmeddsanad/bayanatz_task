@@ -1,10 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bayanatz_task/core/constants/app_assets.dart';
 import 'package:bayanatz_task/core/constants/app_colors.dart';
 import 'package:bayanatz_task/core/constants/app_text_styles.dart';
 import 'package:bayanatz_task/core/functions/check_mobile_or_tablet.dart';
 import 'package:bayanatz_task/core/functions/spacing.dart';
 import 'package:bayanatz_task/core/widgets/custom_elevated_button.dart';
+import 'package:bayanatz_task/features/create_location/presentation/cubit/create_location_cubit.dart';
+import 'package:bayanatz_task/features/create_location/presentation/widgets/dialogs/success_location_added_dialog.dart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -46,7 +51,7 @@ class CreateNewLocationDialog extends StatelessWidget {
               children: [
                 CustomElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.pop(context);
                   },
                   backgroundColor: AppColors.discardOrNoColorButton,
                   title: 'No',
@@ -54,7 +59,18 @@ class CreateNewLocationDialog extends StatelessWidget {
                 horizontalSpace(20),
                 CustomElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    context.read<CreateLocationCubit>().submitLocationForm();
+                    // close the previous dialog
+                    Navigator.pop(context);
+                    // show success dialog
+                    showDialog(
+                      context: context,
+                      builder: (context) => SuccessLocationAddedDialog(),
+                    );
+                    // reset the form
+                    context
+                        .read<CreateLocationCubit>()
+                        .resetLocationDescriptionForm();
                   },
                   backgroundColor: AppColors.createOrYesColorButton,
                   title: 'Yes',

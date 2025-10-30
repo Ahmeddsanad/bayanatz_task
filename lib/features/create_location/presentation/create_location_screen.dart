@@ -36,17 +36,17 @@ class CreateLocationScreen extends StatelessWidget {
               LocationSettingsContent(),
               verticalSpace(20),
               CreateNewLocationButtons(
-                onDiscard: () {
-                  cubit.resetLocationDescriptionForm();
-                },
+                onDiscard: () => cubit.resetLocationDescriptionForm(),
                 onCreate: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => SuccessLocationAddedDialog(),
-                  );
-                  // if (cubit.locDescKey.currentState!.validate()) {}
+                  if (cubit.locDescKey.currentState!.validate()) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => CreateNewLocationDialog(),
+                    );
+                  }
                 },
               ),
+              verticalSpace(20),
             ],
           ),
         ),

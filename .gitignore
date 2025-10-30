@@ -43,3 +43,34 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase configuration files (auto-generated)
+lib/firebase_options.dart
+
+# Firebase service account keys (never upload!)
+serviceAccountKey.json
+firebase-debug.log
+
+# Firebase emulator data
+firebase-debug.log
+.firebaserc
+.firebase/
+storage-debug.log
+firestore-debug.log
+
+# Android build / iOS build
+/build/
+/ios/Pods/
+/android/app/build/
+/macos/Flutter/ephemeral/
+/web/.firebase/
+
+# Google services config (these are sensitive for internal projects)
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+macos/Runner/GoogleService-Info.plist
+
+# IDE and system files
+.idea/
+.vscode/
+.DS_Store

@@ -1,9 +1,13 @@
+import 'package:bayanatz_task/features/create_location/data/location_repository.dart';
+import 'package:bayanatz_task/features/create_location/domain/location_model.dart';
 import 'package:bayanatz_task/features/create_location/presentation/cubit/create_location_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CreateLocationCubit extends Cubit<CreateLocationState> {
   CreateLocationCubit() : super(CreateLocationInitial());
+
+  LocationRepository locationRepository = LocationRepository();
 
   // ----------------------------- create location form ------------------------------
 
@@ -33,6 +37,33 @@ class CreateLocationCubit extends Cubit<CreateLocationState> {
   void toggleAllowPause(bool value) {
     allowPause = value;
     emit(ToggleAllowPauseState());
+  }
+
+  Future<void> submitLocationForm() async {
+    emit(CreateLocationLoadingState());
+
+    try {
+      final location = LocationModel(
+        locationId: '', // will be auto-assigned in repository
+        locationName: locationNameController.text.trim(),
+        locationUrl:
+            'https://maps.google.com/?q=${latitudeController.text.trim()},${longitudeController.text.trim()}',
+        country: countryController.text.trim(),
+        stateOrProvince: stateController.text.trim(),
+        city: cityController.text.trim(),
+        postalCode: postalCodeController.text.trim(),
+        allowGeofence: allowGeofence,
+        allowBreaks: allowBreaks,
+        allowPause: allowPause,
+      );
+
+      await locationRepository.addLocation(location);
+
+      emit(CreateLocationSuccessState());
+      resetLocationDescriptionForm();
+    } catch (e) {
+      emit(CreateLocationErrorState(e.toString()));
+    }
   }
 
   void resetLocationDescriptionForm() {

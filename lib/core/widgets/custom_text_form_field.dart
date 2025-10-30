@@ -1,6 +1,7 @@
 import 'package:bayanatz_task/core/constants/app_colors.dart';
 import 'package:bayanatz_task/core/functions/check_mobile_or_tablet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -8,13 +9,17 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     this.validator,
     this.onFieldSubmitted,
-    super.key,
+    this.inputFormatters,
     this.hintText,
+    this.keyboardType,
+    super.key,
   });
 
   final String? Function(String?)? validator;
   final void Function(String)? onFieldSubmitted;
   final TextEditingController controller;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? keyboardType;
   final String? hintText;
 
   @override
@@ -29,6 +34,8 @@ class CustomTextFormField extends StatelessWidget {
             }
             return null;
           },
+      keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
       onFieldSubmitted: onFieldSubmitted,
       style: TextStyle(fontSize: isTablet(context) ? 18.sp : 14.sp),
       decoration: InputDecoration(

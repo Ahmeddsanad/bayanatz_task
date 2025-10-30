@@ -1,4 +1,5 @@
 import 'package:bayanatz_task/core/constants/app_colors.dart';
+import 'package:bayanatz_task/core/functions/check_mobile_or_tablet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
             return null;
           },
       onFieldSubmitted: onFieldSubmitted,
+      style: TextStyle(fontSize: isTablet(context) ? 18.sp : 14.sp),
       decoration: InputDecoration(
         border: InputBorder.none,
         fillColor: AppColors.lightModeBGColor,
@@ -39,6 +41,7 @@ class CustomTextFormField extends StatelessWidget {
           borderSide: BorderSide(color: AppColors.lightModeBGColor),
         ),
         hintText: hintText ?? 'hint text',
+        hintStyle: TextStyle(fontSize: isTablet(context) ? 18.sp : 14.sp),
       ),
     );
   }

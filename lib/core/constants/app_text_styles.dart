@@ -20,4 +20,10 @@ class AppTextStyle {
     fontWeight: AppFontWeight.semiBold,
     color: AppColors.grayTextColor,
   );
+
+  static TextStyle regular14spBlue(BuildContext context) => TextStyle(
+    color: AppColors.blueMapFieldColor,
+    fontSize: isTablet(context) ? 18.sp : 14.sp,
+    fontWeight: AppFontWeight.regular,
+  );
 }

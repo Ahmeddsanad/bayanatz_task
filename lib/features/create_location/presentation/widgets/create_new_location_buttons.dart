@@ -1,8 +1,6 @@
 import 'package:bayanatz_task/core/constants/app_colors.dart';
-import 'package:bayanatz_task/core/constants/app_text_styles.dart';
-import 'package:bayanatz_task/core/functions/check_mobile_or_tablet.dart';
+import 'package:bayanatz_task/core/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateNewLocationButtons extends StatelessWidget {
   const CreateNewLocationButtons({
@@ -19,40 +17,16 @@ class CreateNewLocationButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ElevatedButton(
+        CustomElevatedButton(
           onPressed: onDiscard,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.discardOrNoColorButton,
-            padding: EdgeInsets.symmetric(
-              horizontal: isTablet(context) ? 50.w : 40.w,
-              vertical: isTablet(context) ? 12.h : 10.h,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-          ),
-          child: Text(
-            'Discard',
-            style: AppTextStyle.semiBold16spGrayed(context),
-          ),
+          backgroundColor: AppColors.discardOrNoColorButton,
+          title: 'Discard',
         ),
         Spacer(),
-        ElevatedButton(
+        CustomElevatedButton(
           onPressed: onCreate,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.createOrYesColorButton,
-            padding: EdgeInsets.symmetric(
-              horizontal: isTablet(context) ? 70.w : 40.w,
-              vertical: isTablet(context) ? 12.h : 10.h,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-          ),
-          child: Text(
-            'Create',
-            style: AppTextStyle.semiBold16spGrayed(context),
-          ),
+          backgroundColor: AppColors.createOrYesColorButton,
+          title: 'Create',
         ),
       ],
     );

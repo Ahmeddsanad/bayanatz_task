@@ -20,6 +20,16 @@ class AppTextStyle {
     fontWeight: AppFontWeight.semiBold,
     color: AppColors.grayTextColor,
   );
+  static TextStyle medium20spGrayed(BuildContext context) => TextStyle(
+    fontSize: isTablet(context) ? 20.sp : 16.sp,
+    fontWeight: AppFontWeight.medium,
+    color: AppColors.grayTextColor,
+  );
+  static TextStyle medium14spLightedGray(BuildContext context) => TextStyle(
+    fontSize: isTablet(context) ? 14.sp : 12.sp,
+    fontWeight: AppFontWeight.medium,
+    color: AppColors.lightedGrayTextColor,
+  );
 
   static TextStyle regular14spBlue(BuildContext context) => TextStyle(
     color: AppColors.blueMapFieldColor,

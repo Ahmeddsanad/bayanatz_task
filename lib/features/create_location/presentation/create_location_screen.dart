@@ -2,6 +2,8 @@ import 'package:bayanatz_task/core/constants/app_colors.dart';
 import 'package:bayanatz_task/core/functions/spacing.dart';
 import 'package:bayanatz_task/features/create_location/presentation/cubit/create_location_cubit.dart';
 import 'package:bayanatz_task/features/create_location/presentation/widgets/create_new_location_buttons.dart';
+import 'package:bayanatz_task/features/create_location/presentation/widgets/dialogs/create_new_location_dialog.dart';
+import 'package:bayanatz_task/features/create_location/presentation/widgets/dialogs/success_location_added_dialog.dart.dart';
 import 'package:bayanatz_task/features/create_location/presentation/widgets/location_description/location_description_content.dart';
 import 'package:bayanatz_task/features/create_location/presentation/widgets/location_settings/location_settings_content.dart';
 import 'package:bayanatz_task/features/create_location/presentation/widgets/new_location_app_bar.dart';
@@ -38,7 +40,11 @@ class CreateLocationScreen extends StatelessWidget {
                   cubit.resetLocationDescriptionForm();
                 },
                 onCreate: () {
-                  if (cubit.locDescKey.currentState!.validate()) {}
+                  showDialog(
+                    context: context,
+                    builder: (context) => SuccessLocationAddedDialog(),
+                  );
+                  // if (cubit.locDescKey.currentState!.validate()) {}
                 },
               ),
             ],
